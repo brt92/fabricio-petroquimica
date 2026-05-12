@@ -805,6 +805,9 @@
       document.body.style.overflow = '';
     };
 
+    // Gatilho por tempo: 1 minuto na página
+    setTimeout(showExitPopup, 60000);
+
     // Desktop: mouse sai pelo topo da janela
     document.addEventListener('mouseout', function(e) {
       if (!e.toElement && !e.relatedTarget && e.clientY < 10) {
