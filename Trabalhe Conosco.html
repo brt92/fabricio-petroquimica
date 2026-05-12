@@ -159,31 +159,43 @@
           </div>
         </div>
 
-        <form class="lg:col-span-3 p-8 md:p-10" onsubmit="submitCv(event)">
-          <input type="hidden" id="cv-vaga" name="vaga" value="" />
+        <form id="cv-form"
+              class="lg:col-span-3 p-8 md:p-10"
+              action="https://formsubmit.co/financeiro@fabriciopetroquimica.com.br"
+              method="POST"
+              enctype="multipart/form-data"
+              onsubmit="prepareSubmit(event)">
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" id="cv-subject" value="CURRÍCULO - Banco de Talentos" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_autoresponse" value="Recebemos seu currículo na Fabrício Indústria Petroquímica. Em breve nossa equipe de RH entrará em contato caso o seu perfil esteja alinhado às nossas oportunidades. Obrigado pelo interesse!" />
+          <input type="hidden" name="_next" value="https://brt92.github.io/fabricio-petroquimica/Trabalhe%20Conosco.html?enviado=1" />
+          <input type="hidden" id="cv-vaga" name="Vaga" value="Banco de Talentos" />
+
           <div id="cv-target" class="hidden mb-6 bg-fabricio-yellow/20 border-l-4 border-fabricio-yellow p-4 rounded">
             <div class="text-xs uppercase tracking-wider text-fabricio-blue font-bold mb-1">Candidatura para</div>
             <div class="text-lg font-black text-fabricio-dark" id="cv-target-name"></div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
             <label class="block"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Nome Completo *</span>
-              <input required type="text" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
+              <input required type="text" name="Nome" id="cv-nome" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
             <label class="block"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">E-mail *</span>
-              <input required type="email" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
+              <input required type="email" name="email" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
             <label class="block"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Telefone *</span>
-              <input required type="tel" placeholder="(51) 99999-9999" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
+              <input required type="tel" name="Telefone" placeholder="(51) 99999-9999" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
             <label class="block"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Cidade / UF</span>
-              <input type="text" placeholder="Triunfo / RS" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
+              <input type="text" name="Cidade" placeholder="Triunfo / RS" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition" /></label>
             <label class="block sm:col-span-2"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Área de Interesse</span>
-              <select class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition">
+              <select name="Área de Interesse" class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition">
                 <option>Produção / Operação</option><option>Laboratório / Qualidade</option>
                 <option>Logística / Frota</option><option>Administrativo</option>
                 <option>Comercial</option><option>Manutenção</option><option>Outros</option>
               </select></label>
             <label class="block sm:col-span-2"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Mensagem (opcional)</span>
-              <textarea rows="3" placeholder="Conte um pouco sobre sua experiência e o que busca..." class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition resize-none"></textarea></label>
+              <textarea name="Mensagem" rows="3" placeholder="Conte um pouco sobre sua experiência e o que busca..." class="mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm focus:border-fabricio-blue focus:outline-none focus:ring-2 focus:ring-fabricio-blue/20 transition resize-none"></textarea></label>
             <label class="block sm:col-span-2"><span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Currículo (PDF, DOC, DOCX — até 5MB) *</span>
-              <input required type="file" accept=".pdf,.doc,.docx" class="file-input mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm cursor-pointer" /></label>
+              <input required type="file" name="attachment" accept=".pdf,.doc,.docx" class="file-input mt-2 w-full bg-fabricio-light border border-slate-200 px-4 py-3 rounded text-sm cursor-pointer" /></label>
           </div>
           <label class="flex items-start gap-3 mt-6 cursor-pointer">
             <input required type="checkbox" class="mt-1 w-4 h-4 accent-fabricio-blue" />
@@ -193,7 +205,7 @@
             Enviar Currículo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
-          <p class="text-xs text-slate-500 mt-4">Você receberá uma confirmação por e-mail em até 24 horas.</p>
+          <p class="text-xs text-slate-500 mt-4">Seu currículo será enviado diretamente para o RH da Fabrício Petroquímica.</p>
         </form>
 
       </div>
@@ -259,16 +271,22 @@
     document.getElementById('cv-target-name').textContent = vaga;
     document.getElementById('curriculo-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  function submitCv(e) {
-    e.preventDefault();
-    const vaga = document.getElementById('cv-vaga').value;
-    const msg = vaga
-      ? `Candidatura para "${vaga}" enviada com sucesso!\nEntraremos em contato em breve.`
-      : 'Currículo cadastrado no banco de talentos!\nObrigado pelo interesse.';
-    alert(msg + '\n\n(Demonstração — em produção, o currículo seria enviado ao RH.)');
-    e.target.reset();
-    document.getElementById('cv-target').classList.add('hidden');
-    document.getElementById('cv-vaga').value = '';
+
+  // Monta dinamicamente o assunto: CURRÍCULO - [VAGA] - [NOME]
+  function prepareSubmit(e) {
+    const vaga = (document.getElementById('cv-vaga').value || 'Banco de Talentos').trim();
+    const nome = (document.getElementById('cv-nome').value || '').trim();
+    document.getElementById('cv-subject').value = `CURRÍCULO - ${vaga} - ${nome}`;
+    // O submit nativo prossegue normalmente — FormSubmit recebe os dados e o anexo
+  }
+
+  // Mensagem de sucesso ao voltar do FormSubmit (?enviado=1)
+  if (new URLSearchParams(window.location.search).get('enviado') === '1') {
+    const banner = document.createElement('div');
+    banner.className = 'fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl font-bold text-sm max-w-md text-center';
+    banner.innerHTML = '✓ Currículo enviado com sucesso!<br><span class="font-normal text-xs">Em breve nossa equipe entrará em contato.</span>';
+    document.body.appendChild(banner);
+    setTimeout(() => banner.remove(), 7000);
   }
 </script>
 </body>
