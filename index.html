@@ -96,9 +96,12 @@
 <!-- ===================== HERO ===================== -->
 <section class="relative bg-fabricio-dark h-[640px] md:h-[680px] flex items-center overflow-hidden">
   <div class="absolute inset-0">
-    <img src="images/fachada-nova-1.jpeg" alt="Fachada Fabrício Petroquímica" class="w-full h-full object-cover" style="filter:brightness(.45)" />
+    <img src="images/fachada-nova-1.jpeg" alt="Fachada Fabrício Petroquímica" class="w-full h-full object-cover" style="object-position: center 20%; filter: brightness(.75) contrast(1.05) saturate(1.1);" />
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-fabricio-blue/85 via-fabricio-blue/40 to-transparent"></div>
+  <!-- Escurecimento maior só no lado esquerdo, garantindo legibilidade do texto -->
+  <div class="absolute inset-0 bg-gradient-to-r from-fabricio-dark/90 via-fabricio-blue/55 to-transparent"></div>
+  <!-- Spotlight amarelo atrás da logo da fachada (canto superior direito) -->
+  <div class="absolute top-0 right-0 w-[55%] h-[55%] bg-fabricio-yellow/15 blur-3xl rounded-full pointer-events-none"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 md:px-8 w-full text-white fade-up">
     <div class="max-w-3xl">
